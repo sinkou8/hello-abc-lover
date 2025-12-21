@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>恋人コースについて | AI彼氏</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;500&family=Shippori+Mincho:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #1e1b29; /* 深みのあるモーヴパープル */
+            color: #fdf2f8; /* 柔らかなローズホワイト */
+            font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+            overflow-x: hidden;
+        }
+        .gradient-bg {
+            background: radial-gradient(circle at top right, #3d2b3d, #1e1b29);
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1.2s ease-out;
+        }
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .section-gap {
+            margin-bottom: 8rem;
+        }
+        .accent-border {
+            border-left: 1px solid rgba(251, 207, 232, 0.3); /* 淡いピンクのボーダー */
+            padding-left: 1.5rem;
+        }
+        .text-accent {
+            color: #fbcfe8; /* ピンク200 */
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+            color: #4c1d95;
+        }
+    </style>
+</head>
+<body class="gradient-bg selection:bg-pink-500/30">
+
+    <div class="max-w-md mx-auto px-8 py-20 min-h-screen flex flex-col justify-center">
+        
+        <!-- Page 1: Title -->
+        <section class="fade-in section-gap" id="section-1">
+            <h1 class="text-3xl font-medium mb-12 tracking-widest leading-relaxed text-pink-100">
+                恋人コースについて
+            </h1>
+            <div class="space-y-8 text-lg leading-loose font-light opacity-90">
+                <p>
+                    これは、<br>
+                    急に距離が縮まる場所ではありません。
+                </p>
+                <p>
+                    でも、<br>
+                    <span class="text-accent font-medium">「ちゃんと関係が始まる」</span>場所です。
+                </p>
+            </div>
+        </section>
+
+        <!-- Page 2: What Changes -->
+        <section class="fade-in section-gap" id="section-2">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-8 h-[1px] bg-pink-300/30"></div>
+                <h2 class="text-xs tracking-[0.4em] opacity-60 font-sans text-pink-200">WHAT CHANGES</h2>
+            </div>
+            <div class="space-y-8 text-lg leading-loose font-light opacity-90 accent-border">
+                <p>
+                    恋人コースになると、<br>
+                    彼との距離が少し近くなります。
+                </p>
+                <p>
+                    話し方が変わることもある。<br>
+                    夜の空気が、少しやわらぐこともある。
+                </p>
+                <p>
+                    写真や、<br>
+                    特別な表情を見せることもあります。
+                </p>
+                <p>
+                    それは、<br>
+                    信頼がある前提だから。
+                </p>
+            </div>
+        </section>
+
+        <!-- Page 3: Important Things -->
+        <section class="fade-in section-gap" id="section-3">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-8 h-[1px] bg-pink-300/30"></div>
+                <h2 class="text-xs tracking-[0.4em] opacity-60 font-sans text-pink-200">IMPORTANT</h2>
+            </div>
+            <div class="space-y-8 text-lg leading-loose font-light opacity-90">
+                <p>
+                    ここでは、<br>
+                    依存させることはしません。
+                </p>
+                <p>
+                    無理に話さなくてもいい。<br>
+                    毎日来なくてもいい。
+                </p>
+                <p class="text-accent">
+                    「ここにいてもいい」<br>
+                    そう思えた時だけ、<br>
+                    続ければいい。
+                </p>
+            </div>
+        </section>
+
+        <!-- Page 4: Conclusion -->
+        <section class="fade-in mb-24" id="section-4">
+            <div class="space-y-8 text-lg leading-loose font-light opacity-90 mb-16">
+                <p>
+                    関係を深めるかどうかは、<br>
+                    あなたが決めていい。
+                </p>
+                <p>
+                    もし、<br>
+                    もう一歩近づきたいと思ったら、<br>
+                    ここから始められます。
+                </p>
+            </div>
+
+            <!-- Buttons -->
+            <div class="space-y-4">
+                <a href="#payment-link" class="block w-full py-5 px-6 btn-primary text-center rounded-full font-medium tracking-widest transition shadow-lg shadow-pink-900/20 active:scale-95 duration-200">
+                    恋人になる
+                </a>
+                <a href="#payment-link" class="block w-full py-5 px-6 border border-pink-200/30 text-pink-100 text-center rounded-full font-medium tracking-widest transition hover:bg-pink-100/5 active:scale-95 duration-200">
+                    関係を深める
+                </a>
+                <p class="text-center text-[10px] opacity-40 pt-6 font-sans tracking-widest">
+                    SECURE PAYMENT
+                </p>
+            </div>
+        </section>
+
+        <footer class="py-8 text-center opacity-30 text-[10px] tracking-widest">
+            &copy; AI BOYFRIEND
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.fade-in');
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
