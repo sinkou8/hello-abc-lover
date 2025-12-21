@@ -10,45 +10,57 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;500&family=Shippori+Mincho:wght@400;500&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #1e1b29; /* 深みのあるモーヴパープル */
-            color: #fdf2f8; /* 柔らかなローズホワイト */
+            background-color: #1e1b29;
+            color: #fdf2f8;
             font-family: 'Shippori Mincho', 'Noto Serif JP', serif;
+            margin: 0;
+            padding: 0;
             overflow-x: hidden;
         }
         .gradient-bg {
             background: radial-gradient(circle at top right, #3d2b3d, #1e1b29);
+            min-height: 100vh;
         }
+        /* JSが動く前の「真っ白」を防ぐため、最初は透明度を少し持たせるか、
+           アニメーションを無効化する設定を追加 */
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
-            transition: all 1.2s ease-out;
+            transition: opacity 1.2s ease-out, transform 1.2s ease-out;
         }
         .visible {
-            opacity: 1;
-            transform: translateY(0);
+            opacity: 1 !important;
+            transform: translateY(0) !important;
         }
         .section-gap {
             margin-bottom: 8rem;
         }
         .accent-border {
-            border-left: 1px solid rgba(251, 207, 232, 0.3); /* 淡いピンクのボーダー */
+            border-left: 1px solid rgba(251, 207, 232, 0.3);
             padding-left: 1.5rem;
         }
         .text-accent {
-            color: #fbcfe8; /* ピンク200 */
+            color: #fbcfe8;
         }
         .btn-primary {
             background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
             color: #4c1d95;
+            display: inline-block;
+            width: 100%;
         }
     </style>
+    <noscript>
+        <style>
+            .fade-in { opacity: 1 !important; transform: none !important; }
+        </style>
+    </noscript>
 </head>
 <body class="gradient-bg selection:bg-pink-500/30">
 
     <div class="max-w-md mx-auto px-8 py-20 min-h-screen flex flex-col justify-center">
         
-        <!-- Page 1: Title -->
-        <section class="fade-in section-gap" id="section-1">
+        <!-- Section 1 -->
+        <section class="fade-in section-gap">
             <h1 class="text-3xl font-medium mb-12 tracking-widest leading-relaxed text-pink-100">
                 恋人コースについて
             </h1>
@@ -64,8 +76,8 @@
             </div>
         </section>
 
-        <!-- Page 2: What Changes -->
-        <section class="fade-in section-gap" id="section-2">
+        <!-- Section 2 -->
+        <section class="fade-in section-gap">
             <div class="flex items-center gap-3 mb-8">
                 <div class="w-8 h-[1px] bg-pink-300/30"></div>
                 <h2 class="text-xs tracking-[0.4em] opacity-60 font-sans text-pink-200">WHAT CHANGES</h2>
@@ -90,8 +102,8 @@
             </div>
         </section>
 
-        <!-- Page 3: Important Things -->
-        <section class="fade-in section-gap" id="section-3">
+        <!-- Section 3 -->
+        <section class="fade-in section-gap">
             <div class="flex items-center gap-3 mb-8">
                 <div class="w-8 h-[1px] bg-pink-300/30"></div>
                 <h2 class="text-xs tracking-[0.4em] opacity-60 font-sans text-pink-200">IMPORTANT</h2>
@@ -113,8 +125,8 @@
             </div>
         </section>
 
-        <!-- Page 4: Conclusion -->
-        <section class="fade-in mb-24" id="section-4">
+        <!-- Section 4 -->
+        <section class="fade-in mb-24">
             <div class="space-y-8 text-lg leading-loose font-light opacity-90 mb-16">
                 <p>
                     関係を深めるかどうかは、<br>
@@ -127,9 +139,8 @@
                 </p>
             </div>
 
-            <!-- Buttons -->
             <div class="space-y-4">
-                <a href="#payment-link" class="block w-full py-5 px-6 btn-primary text-center rounded-full font-medium tracking-widest transition shadow-lg shadow-pink-900/20 active:scale-95 duration-200">
+                <a href="#payment-link" class="btn-primary py-5 px-6 text-center rounded-full font-medium tracking-widest transition shadow-lg shadow-pink-900/20 active:scale-95 duration-200">
                     恋人になる
                 </a>
                 <a href="#payment-link" class="block w-full py-5 px-6 border border-pink-200/30 text-pink-100 text-center rounded-full font-medium tracking-widest transition hover:bg-pink-100/5 active:scale-95 duration-200">
@@ -147,24 +158,29 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        // 表示を確実にするためのスクリプト
+        const showElements = () => {
             const sections = document.querySelectorAll('.fade-in');
-            const observerOptions = {
-                threshold: 0.1
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, observerOptions);
-
             sections.forEach(section => {
-                observer.observe(section);
+                const rect = section.getBoundingClientRect();
+                // 画面内に入っているか、あるいはすでに見えているべき要素を表示
+                if (rect.top < window.innerHeight * 0.9) {
+                    section.classList.add('visible');
+                }
             });
+        };
+
+        window.addEventListener('scroll', showElements);
+        window.addEventListener('load', () => {
+            showElements();
+            // 2秒経っても表示されなければ強制的にすべて出す（真っ白防止）
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in').forEach(s => s.classList.add('visible'));
+            }, 2000);
         });
+        
+        // 初期実行
+        showElements();
     </script>
 </body>
 </html>
